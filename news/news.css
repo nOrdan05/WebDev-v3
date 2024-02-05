@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box
+}
+
+.brand-header {
+    grid-area: brand-header;
+}
+
+.brand {
+    font-family: "Snell Roundhand";
+    text-align: center;
+    font-size: 70px;
+    font-weight: normal;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    grid-area: nav-links;
+    justify-content: space-evenly;
+    border: 3px solid black;
+    padding: 20px;
+    margin: 0;
+}
+
+.section-link {
+    text-decoration: none;
+    font-size: 40px;
+    color: grey;
+    font-weight: bold;
+}
+
+.section-link:hover {
+    text-decoration: underline;
+}
+
+.article-title {
+    text-align: center;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+.article-img {
+    display: block;
+    margin: auto;
+}
+
+.story {
+    padding: 20px;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.story-1 {
+    grid-area: story-1;
+}
+
+.story-2 {
+    grid-area: story-2;
+}
+
+.story-3 {
+    grid-area: story-3;
+    border-right: 3px solid black;
+}
+
+.story-4 {
+    grid-area: story-4;
+}
+
+.story-5 {
+    grid-area: story-5;
+    border-right: 3px solid black;
+}
+
+.page {
+    display: grid;
+    grid-template-areas: 
+    "brand-header brand-header brand-header"
+    "nav-links nav-links nav-links"
+    "story-1 story-2 story-3"
+    "story-4 story-5 story-5";
+}
