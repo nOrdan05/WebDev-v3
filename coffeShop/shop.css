@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box
+}
+
+.main-header {
+    grid-area: main-header;
+    display: flex;
+    background-color: #43281c;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 35px;
+}
+
+.main-title {
+    color: #fbf2c0;
+}
+
+.main-image {
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+}
+
+.order, .customer, .payment {
+    background-color: #ede0d4;
+}
+
+.order {
+    grid-area: order;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.amount {
+    grid-area: amount;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.item-name {
+    grid-area: item-name;
+    margin-bottom: 8px;
+}
+
+.extras {
+    grid-area: extras;
+    color: #926943;
+}
+
+.extra {
+    margin: 0;
+}
+
+.price {
+    grid-area: price;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.order-item {
+    display: grid;
+    align-items: center;
+    border-bottom: 3px solid #e5cdb4;
+    padding-bottom: 20px;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-areas:
+    "amount item-name price"
+    ". extras ."
+}
+
+.information {
+    display: flex;
+    grid-area: information;
+    flex-direction: column;
+    row-gap: 5%;
+    margin-right: 30px;
+}
+
+.customer {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+} 
+
+.payment {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.part-header {
+    text-transform: uppercase;
+    color: #98704b;
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.name-block{
+    position: relative;
+    display: inline-block;
+    border: 2px solid #98704b;
+    border-radius: 100px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card-block{
+    position: relative;
+    display: inline-block;
+    border: 2px solid #98704b;
+    border-radius: 100px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.ccv-block{
+    position: relative;
+    display: inline-block;
+    border: 2px solid #98704b;
+    border-radius: 100px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.standard-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-indent: 18px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.input-label {
+    background-color: #ede0d4;
+    color: #98704b;
+    font-size: 11px;
+    position: absolute;
+    left: 25px;
+    top: -7px;
+    padding: 0 2px;
+}
+
+.bill {
+    margin-top: 300px;
+    justify-content: center;
+    column-gap: 300px;
+    display: grid;
+    grid-area: bill;
+    grid-template-areas: 
+    "subtotal subtotal-price"
+    "tax tax-price"
+    "total total-price";
+}
+
+.subtotal {
+    grid-area: subtotal;
+}
+
+.subtotal-price {
+    grid-area: subtotal-price;
+}
+
+.tax {
+    grid-area: tax;
+}
+
+.tax-price {
+    grid-area: tax-price;
+}
+
+.total {
+    grid-area: total;
+    font-weight: bold;
+}
+
+.total-price {
+    grid-area: total-price;
+    font-weight: bold;
+}
+
+.place-order {
+    grid-area: place-order;
+    border: none;
+    border-radius: 100px;
+    background-color: #ddb892;
+    padding: 15px;
+    color: #3e4430;
+    margin-top: 40px;
+    margin-right: 50px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "main-header main-header"
+    "order information"
+    "bill bill"
+    "place-order place-order";
+}   
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}

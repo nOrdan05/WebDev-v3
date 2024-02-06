@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="shop.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+    rel="stylesheet" />
+</head>
+<body>
+    <div class="page">
+        <div class="main-header">
+            <img class="main-image" src="pictures/coffee_masters_logo.png" alt="Coffee cup logo" />
+            <h1 class="main-title">Coffee Masters</h1>
+        </div>
+        <div class="order">
+            <h2 class="part-header">Items</h2>
+            <div class="order-item">
+                <p class="amount">1x</p>
+                <h3 class="item-name">Capuccino</h3>
+                <div class="extras">
+                    <p class="extra">Lite foam</pp>
+                </div>
+                <p class="price">$3.35</p>
+            </div>
+            <div class="order-item">
+                <p class="amount">1x</p>
+                <h3 class="item-name">Capuccino</h3>
+                <div class="extras">
+                    <p class="extra">Lite milk</p>
+                    <p class="extra">Double espresso</p>
+                </div>
+                <p class="price">$3.85</p>
+            </div>
+            <div class="order-item">
+                <p class="amount">1x</p>
+                <h3 class="item-name">Capuccino</h3>
+                <div class="extras">
+                    <p class="extra">Butter</p>
+                </div>
+                <p class="price">$2.45</p>
+            </div>
+        </div>
+        <div class="information">
+            <div class="customer">
+                <h2 class="part-header">Name</h2>
+                <div class="name-block">
+                    <label for="name" class="input-label">Name for order</label>
+                    <input id="name" class="standard-input" type="text" />
+                </div>
+            </div>
+            <div class="payment">
+                <h2 class="part-header">Payment</h2>
+                <div class="card-block">
+                    <label for="card-number" class="input-label">Card number</label>
+                    <input id="card-number" class="standard-input" type="text" />
+                </div>
+                <div class="ccv-block">
+                    <label for="ccv-number" class="input-label">CCV number</label>
+                    <input id="ccv-number" class="standard-input short-input" type="text" />
+                </div>
+            </div>
+        </div>
+        <div class="bill">
+            <p class="subtotal">Subtotal:</p>
+            <p class="subtotal-price">$9.65</p>
+            <p class="tax">Tax:</p>
+            <p class="tax-price">$0.82</p>
+            <p class="total">Total:</p>
+            <p class="total-price">$10.47</p>
+        </div>
+        <button class="place-order">Place order</button>
+    </div>
+</body>
+</html>
