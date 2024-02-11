@@ -1,0 +1,142 @@
+* {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Hier nochma schauen, weil das ja von allen margin nimmt */
+    /*Eigentlich will ich den Calculator links oben haben */
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    grid-area: result;
+    background-color: black;
+    color: white;
+    padding: 2px;
+    font-size: calc(1vh + 1vw);
+}
+
+.clear {
+    grid-area: clear;
+}
+
+.back {
+    grid-area: back;
+}
+
+.nine {
+    grid-area: nine;
+}
+
+.eight {
+    grid-area: eight;
+}
+
+.seven {
+    grid-area: seven;
+}
+
+.six {
+    grid-area: six;
+}
+
+.five {
+    grid-area: five;
+}
+
+.four {
+    grid-area: four;
+}
+
+.three {
+    grid-area: three;
+}
+
+.two {
+    grid-area: two;
+}
+
+.one {
+    grid-area: one;
+}
+
+.null {
+    grid-area: null;
+}
+
+.division {
+    grid-area: division;
+}
+
+.multiplication {
+    grid-area: multiplication;
+}
+
+.subtraction {
+    grid-area: subtraction;
+}
+
+.addition {
+    grid-area: addition;
+}
+
+.equals {
+    grid-area: equals;
+}
+
+.orangeButton {
+    background-color: #df974c;
+    color: white;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: calc(1vh + 1vw);
+}
+
+.orangeButton:hover {
+    background-color: #ebebeb;
+}
+
+.orangeButton:active {
+    background-color: #bbbcbe;
+}
+
+.greyButton {
+    background-color: #d8d9db;
+    color: black;
+    border: none;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-size: calc(1vh + 1vw);
+}
+
+.greyButton:hover {
+    background-color: #ebebeb;
+}
+
+.greyButton:active {
+    background-color: #bbbcbe; 
+}
+
+.null.greyButton {
+    border-bottom: none;
+}
+
+.equals.orangeButton {
+    border-bottom: none;
+}
+
+.calculator {
+    display: grid;
+    width: 25%;
+    padding: 5px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "result result result result"   
+    "clear clear back division"
+    "seven eight nine multiplication"
+    "four five six subtraction"
+    "one two three addition"
+    "null null null equals";
+}
