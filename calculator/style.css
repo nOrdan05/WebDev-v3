@@ -2,8 +2,7 @@
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    margin: 0 auto; /* Hier nochma schauen, weil das ja von allen margin nimmt */
-    /*Eigentlich will ich den Calculator links oben haben */
+    margin: 0 auto;
 }
 
 .result {

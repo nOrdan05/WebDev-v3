@@ -24,76 +24,35 @@ function calculate(mathAction) {
         currentInput += parsedInput;
         printResult(currentInput);
     } else {
-        handleSymbol2(mathAction);
+        handleSymbol(mathAction);
     }
 }
 
 function handleSymbol(mathAction) {
     if (mathAction === "=") {
-        equalsPressed = true;
-        if (checkLastInput(exercise[exercise.length-1]) === true) {
-            //console.log(exercise);
-            exercise.push(Number.parseInt(currentInput)); //Wenn man clear drückt oder nachdem man plus gedrückt hat und dann gleich wird das hier geaddet! Dann haben wir NaN im Array stehen
+        exercise.push(Number.parseInt(currentInput));
+        if (checkLastInput(exercise[exercise.length-1]) && exercise.length === 3) { //When you enter a number and press equals sign it will throw NaN in the result field
             handleCalculationSymbol(exercise[1]);
-            //console.log(overallValue);
             printResult(overallValue);
+            equalsPressed = true;
         }
+        console.log(exercise);
     } else if (mathAction === "C") {
-        //console.log("not ready yet");
         clear();
     } else if (mathAction === "←") {
-        //console.log("not ready yet");
         goBack();
     } else {
-        //console.log("Here");
         exercise.push(Number.parseInt(currentInput));
         if (exercise.length === 3) {
-            //console.log("3 lang");
-           // console.log(exercise);
             handleCalculationSymbol(exercise[1]);
         }
         exercise.push(mathAction);
         currentInput = "";
         printResult("0");
-        //console.log("Done");
-    }
-}
-
-function handleSymbol2(mathAction) {
-    if (mathAction === "=") {
-        equalsPressed = true;
-        exercise.push(Number.parseInt(currentInput)); //Wenn man clear drückt oder nachdem man plus gedrückt hat und dann gleich wird das hier geaddet! Dann haben wir NaN im Array stehen
-        if (currentInput.length !== 0) {
-            //console.log(exercise);
-            handleCalculationSymbol(exercise[1]);
-            //console.log(overallValue);
-            printResult(overallValue);
-        } else {
-            clear();
-        }
-    } else if (mathAction === "C") {
-        //console.log("not ready yet");
-        clear();
-    } else if (mathAction === "←") {
-        //console.log("not ready yet");
-        goBack();
-    } else {
-        //console.log("Here");
-        exercise.push(Number.parseInt(currentInput));
-        if (exercise.length === 3) {
-            //console.log("3 lang");
-           // console.log(exercise);
-            handleCalculationSymbol(exercise[1]);
-        }
-        exercise.push(mathAction);
-        currentInput = "";
-        printResult("0");
-        //console.log("Done");
     }
 }
 
 function handleCalculationSymbol(mathAction) {
-    //console.log(mathAction);
     printResult("0");
     if (mathAction === "+") {
         overallValue = exercise[0] + exercise[2];
@@ -146,26 +105,3 @@ function goBack() {
         printResult(currentInput);
     }
 }
-
-// function calculateValue() {
-//     let temp = 0;
-//     for (let i = 0; i < exercise.length; i++) {
-//         if (exercise[2*i+1] === "×") {
-//             temp = exercise[i] * exercise[i+2];
-//             exercise = exercise.splice(i-1,3);
-//             exercise.unshift(temp);
-//         } 
-//         else if (exercise[2*i+1] === "÷") {
-//             temp = exercise[i] / exercise[i+2];
-//             exercise = exercise.splice(i-1,3);
-//             exercise.unshift(temp);
-//         }
-//         else {
-//             i = i + 2;
-//         }  
-//     }
-//     console.log(exercise);
-
-
-
-// }
