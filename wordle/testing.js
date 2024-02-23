@@ -27,15 +27,35 @@ function isLetter(letter) {
     return /^[a-zA-Z]$/.test(letter);
 }
 
+async function getTodaysWord() {
+    const promise = await fetch(GET_TODAYS_WORD_URL);
+    
+}
+
 function sendWord() {
 
-    if (currentChar === 4) { //Wenn man beim 4. Buchstaben Enter drückt springt er bereits in die nächste Zeile
+    if (currentChar === 4) {
         if (currentTry !== 5) {
-            console.log(currentChar);
+            validateWord();
             currentChar = 0;
             currentTry++;
         }
     }
+}
+
+async function validateWord() {
+    const promise = await fetch(VALIDATE_WORD_URL, {
+        method: "POST",
+        body: JSON.stringify({"word":test})
+    });
+    const processedResponse = await promise.json();
+    if (processedResponse.validWord === true) {
+        evaluateGuess();
+    }
+}
+
+function evaluateGuess() {
+
 }
 
 function deleteLastLetter() {
@@ -48,6 +68,7 @@ function deleteLastLetter() {
 function printLetter(letter,backspacePressed) {
     let field = document.querySelector(`.${position[currentTry]}-word-${position[currentChar]}-char`);
     field.innerHTML = letter.toUpperCase();
+
     if (!backspacePressed && currentChar !== 4) {
         currentChar++;
     }
