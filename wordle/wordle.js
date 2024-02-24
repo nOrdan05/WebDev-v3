@@ -18,7 +18,7 @@ window.addEventListener("keyup", function (event) {
     else if (!isLetter(event.key)) {
         console.log("No letter");
     }
-    else {
+    else if (currentTry !== 6) {
         console.log("Letter");
         printLetter(event.key,false);
     }
@@ -29,9 +29,8 @@ function isLetter(letter) {
 }
 
 function sendWord() {
-
     if (currentWord.length === 5) { 
-        if (currentTry !== 5) {
+        if (currentTry !== 6) {
             currentWord = [];
             currentChar = 0;
             currentTry++;
@@ -40,10 +39,10 @@ function sendWord() {
 }
 
 function deleteLastLetter() {
-    printLetter("",true);
-    if (currentChar !== 0) {
+    if (currentWord.length !== currentChar+1 && currentWord.length > 0) {
         currentChar--;
     }
+    printLetter("",true);
 }
 
 function printLetter(letter,backspacePressed) {
@@ -54,7 +53,20 @@ function printLetter(letter,backspacePressed) {
         currentChar++;
     }
     else if (!backspacePressed && currentChar === 4) {
-        currentWord.push(letter);
+        if (currentWord.length === 5) {
+            console.log("Before removing: " + currentWord.join(""));
+            currentWord.pop();
+            currentWord.push(letter);
+            console.log("After removing: " + currentWord.join(""));
+        }
+        else {
+            currentWord.push(letter);
+        }
+    }
+    else if (backspacePressed && currentWord.length !== 0) {
+        console.log("Before removing: " + currentWord.join(""));
+        currentWord.pop();
+        console.log("After removing: " + currentWord.join(""));
     }
 
     /* 
