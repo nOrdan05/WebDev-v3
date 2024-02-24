@@ -1,7 +1,8 @@
 let position = ["first","second","third","fourth","fifth","sixth"];
+
+let currentWord = [];
 let currentTry = 0; //We count from 0 to 4
 let currentChar = 0;
-let test = "Test";
 
 const VALIDATE_WORD_URL = "https://words.dev-apis.com/validate-word";
 
@@ -29,9 +30,9 @@ function isLetter(letter) {
 
 function sendWord() {
 
-    if (currentChar === 4) { //Wenn man beim 4. Buchstaben Enter drückt springt er bereits in die nächste Zeile
+    if (currentWord.length === 5) { 
         if (currentTry !== 5) {
-            console.log(currentChar);
+            currentWord = [];
             currentChar = 0;
             currentTry++;
         }
@@ -49,7 +50,11 @@ function printLetter(letter,backspacePressed) {
     let field = document.querySelector(`.${position[currentTry]}-word-${position[currentChar]}-char`);
     field.innerHTML = letter.toUpperCase();
     if (!backspacePressed && currentChar !== 4) {
+        currentWord.push(letter);
         currentChar++;
+    }
+    else if (!backspacePressed && currentChar === 4) {
+        currentWord.push(letter);
     }
 
     /* 
