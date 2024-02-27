@@ -1,3 +1,5 @@
+//TODO: If the word of the day is "Today" and I enter "Spoon", then both O's would be marked as yellow. This should not be the case, but a check is not implemented.
+
 const position = ["first", "second", "third", "fourth", "fifth", "sixth"];
 
 const GET_TODAYS_WORD_URL = "https://words.dev-apis.com/word-of-the-day";
