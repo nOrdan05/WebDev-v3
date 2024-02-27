@@ -21,7 +21,11 @@ body {
 }
 
 .loading-bar {
-    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .hidden {
@@ -82,4 +86,73 @@ body {
     border: 3px solid #ccc;
     font-size: 32px;
     font-weight: bold;
+}
+
+@keyframes flash {
+    5% {
+        border-color: crimson;
+    }
+    100% {
+        border-color: #CCCCCC;
+    }
+}
+
+.flashing {
+    animation: flash 2s;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinning {
+    animation: spin 1s infinite linear;
+    display: inline-block;
+    font-size: 30px;
+}
+
+@keyframes rainbow {
+    100%,
+    0% {
+      color: rgb(255, 0, 0);
+    }
+    8% {
+      color: rgb(255, 127, 0);
+    }
+    16% {
+      color: rgb(255, 255, 0);
+    }
+    25% {
+      color: rgb(127, 255, 0);
+    }
+    33% {
+      color: rgb(0, 255, 0);
+    }
+    41% {
+      color: rgb(0, 255, 127);
+    }
+    50% {
+      color: rgb(0, 255, 255);
+    }
+    58% {
+      color: rgb(0, 127, 255);
+    }
+    66% {
+      color: rgb(0, 0, 255);
+    }
+    75% {
+      color: rgb(127, 0, 255);
+    }
+    83% {
+      color: rgb(255, 0, 255);
+    }
+    91% {
+      color: rgb(255, 0, 127);
+    }
+  }
+
+.rainbow-text {
+    animation: rainbow 5s infinite linear;
 }
