@@ -14,14 +14,15 @@ gameOver = false;
 
 todaysWord = "";
 
+/*
+Load the word of the day when the website is loaded.
+*/
 window.onload = async function () {
     isLoading = true;
     handleLoading();
     const promise = await fetch(GET_TODAYS_WORD_URL);
     const processedResponse = await promise.json();
     todaysWord = processedResponse.word;
-    console.log("Done");
-    console.log(todaysWord);
     isLoading = false;
     handleLoading();
 }
@@ -32,18 +33,12 @@ Listens for key releases of the user while the window has focus and processes th
 window.addEventListener("keyup", function (event) {
     if (!isLoading && !gameOver) { //The website has not to be loading and the game has not to be over
         if (event.key === "Enter") { //Processes when the user presses "Enter"
-            console.log("Enter");
             sendWord();
         }
         else if (event.key === "Backspace") { //Processes when the user presses "Backspace"
-            console.log("Backspace");
             deleteLastLetter();
         }
-        else if (!isLetter(event.key)) { //Ignores all key releases which are not "Enter", "Backspace" or a letter
-            console.log("No letter");
-        }
-        else if (currentTry !== 6) { //Processes when the user presses any letter if the user has not already used all 6 attempts
-            console.log("Letter");
+        else if (isLetter(event.key)) { //Processes when the user presses any letter
             printLetter(event.key, false);
         }
     }
@@ -88,7 +83,7 @@ Sends the user's entered word to compare if it is the word of the day
 */
 function sendWord() {
     if (currentWord.length === 5) { //When the word entered by the user has a length of 5 the word is send to be validated
-        if (currentTry !== 6) { //Ggf. kann
+        if (currentTry !== 6) { 
             validateWord(currentWord.join(""));
         }
     }
@@ -122,7 +117,6 @@ async function validateWord(word) {
     }
     isLoading = false;
     handleLoading();
-    //isLoading = false; //Set isLoading to false, to allow user inputs again
 }
 
 /*Activating the animation to show the user a entered word is not a valid English word.
@@ -143,7 +137,6 @@ function markWrongWord() {
 Evaluates how good the word of the user fits to the word of the day.
 */
 function evaluateGuess(word) {
-    console.log("This is try number " + currentTry);
     if (word === todaysWord) { //When the entered word is todays word the user wins
         updateGameStatus(true);
     }
@@ -153,17 +146,14 @@ function evaluateGuess(word) {
             if (word.charAt(i) === todaysWord.charAt(i)) { //Paint the field green if the character of todays word and the character of the entered word match at this position
                 currentField.style.backgroundColor = "#006400";
                 currentField.style.color = "#FFFFFF";
-                console.log("Green");
             }
             else if (todaysWord.includes(word.charAt(i))) { //Paint the field yellow if todays word contains the charcter of the entered word, but at another position
                 currentField.style.backgroundColor = "#DAA520";
                 currentField.style.color = "#FFFFFF";
-                console.log("Yellow");
             }
             else { //Paint the field grey if todays word does not match or contain the charcter of the entered word
                 currentField.style.backgroundColor = "#888888";
                 currentField.style.color = "#FFFFFF";
-                console.log("Grey");
             }
         }
         if (currentTry === 5) { //When it was the sixth try the user loses and todays word is revealed
@@ -188,10 +178,7 @@ function deleteLastLetter() {
 Prints out the last entered letter into the current and adds it to the total word entered by the user.
 */
 function printLetter(letter, backspacePressed) {
-    console.log(currentChar);
-    console.log(currentTry);
     let field = document.querySelector(`.${position[currentTry]}-word-${position[currentChar]}-char`);
-    console.log(field);
     field.innerHTML = letter.toUpperCase();
     if (!backspacePressed && currentChar !== 4) { //When the user does not write into the fifth field
         currentWord.push(letter);
@@ -199,18 +186,14 @@ function printLetter(letter, backspacePressed) {
     }
     else if (!backspacePressed && currentChar === 4) { //When the user writes into the fifth field
         if (currentWord.length === 5) { //When the fifth field was not empty
-            console.log("Before removing: " + currentWord.join(""));
             currentWord.pop();
             currentWord.push(letter);
-            console.log("After removing: " + currentWord.join(""));
         }
         else { //When the fifth field was empty
             currentWord.push(letter);
         }
     } //When backspace was pressed to delete the letter in the current field
     else if (backspacePressed && currentWord.length !== 0) {
-        console.log("Before removing: " + currentWord.join(""));
         currentWord.pop();
-        console.log("After removing: " + currentWord.join(""));
     }
 }
